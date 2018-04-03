@@ -1,15 +1,17 @@
-const Discord = require('discord.js');
-const client = new Discord.Client();
+const Discord = require("discord.js");
 
-client.on('ready', () => {
-    console.log('Ready!');
+var bot = new Discord.Client();
+
+bot.on("ready", function() {
+    console.log("Ready");
 });
 
-client.on('message', message => {
-    if (message.content === 'o co chodzi') {
-    	message.reply('Chodzi o kutasa');
-  	}
+bot.on("message", function(message) {
+    if (message.author.equals(bot.user)) return;
+
+    if (message.content == "o co chodzi") {
+        message.channel.sendMessage("Chodzi o kutasa");
+    }
 });
 
-// THIS  MUST  BE  THIS  WAY
-client.login(process.env.BOT_TOKEN);
+bot.login(process.env.BOT_TOKEN);
